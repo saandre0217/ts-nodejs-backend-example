@@ -1,12 +1,12 @@
-//import { Request, Response } from "express";
+import { Request, Response } from "express";
 import { Customer, CustomerInstance } from '../db/models/customer'
 // import { WorkOrder, WorkOrderAttributes } from '../models/workOrder';
 // import { Bike } from '../models/bike';
 // import { PhotoWorkOrder } from '../models/photo';
 // import { allQuestionsInstance } from '../../client/src/Components/Form/formQuestionData'
 
-export const createCustomer = async(formData: any) => {
-    const { firstName, lastName, email, phone} = formData.state
+export const createCustomer = async(req: Request, res: Response) => {
+    const { firstName, lastName, email, phone} = req.body
     try {
         console.log(firstName, phone)
         const currentCustomer = await Customer.findOne({
@@ -33,6 +33,50 @@ export const createCustomer = async(formData: any) => {
         console.error('error creating customer', error)
     }
 };
+
+export const getCustomers = async (req: Request, res: Response) => {
+    try{
+
+        const customers = await Customer.findAll({})
+        //console.log(customers)
+        res.status(200).send(customers)
+
+    }catch(error){
+        console.error('could not get customers', error)
+        res.sendStatus(500)
+    }
+
+}
+
+// export const createCustomer = async(formData: any) => {
+//     const { firstName, lastName, email, phone} = formData.state
+//     try {
+//         console.log(firstName, phone)
+//         const currentCustomer = await Customer.findOne({
+//             where: {
+//                 phone
+//             }
+//         })
+
+//         if(currentCustomer){
+//             return currentCustomer
+//         } else {
+//             const newCustomer = await Customer.create({
+//                 firstName,
+//                 lastName,
+//                 phone,
+//                 email 
+//             })
+    
+//             return newCustomer
+//         }
+
+        
+//     }catch(error){
+//         console.error('error creating customer', error)
+//     }
+// };
+
 // interface createWorkOrderAttributes {
 //     createWorkOrder: (formData: allQuestionsInstance, customerId: number) => WorkOrderAttributes
 // }
