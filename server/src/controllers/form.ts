@@ -44,7 +44,7 @@ export const getCustomers = async (req: Request, res: Response) => {
 
     }catch(error){
         console.error('could not get customers', error)
-        res.sendStatus(500)
+        res.status(500).send(error)
     }
 
 }
