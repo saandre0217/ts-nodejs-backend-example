@@ -11,8 +11,11 @@ const params = {
 //@ts-ignore
 export const db = new Sequelize(params.db, params.user, params.password, {
     host:params.host,
-    dialect: 'mysql'
-})
+    dialect: 'mysql',
+    dialectOptions: {
+        encrypt: true
+      }
+} )
 export const createDatabase = async (): Promise<void> => {
   try {
     await db.query(`CREATE DATABASE IF NOT EXISTS ${params.db};`);
