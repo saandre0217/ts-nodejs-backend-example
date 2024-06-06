@@ -5,14 +5,15 @@ const params = {
     password: MYSQL.password,
     db: MYSQL.db,
     host: MYSQL.host,
-    port: 3306
+    port: 3306,
+    
 }
 
 //@ts-ignore
 export const db = new Sequelize(params.db, params.user, params.password, {
     host:params.host,
     dialect: 'mysql',
-   
+    require_secure_transport: false
 })
 export const createDatabase = async (): Promise<void> => {
   try {
