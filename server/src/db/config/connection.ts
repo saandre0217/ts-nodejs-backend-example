@@ -1,21 +1,19 @@
 import { MYSQL } from "./variables";
 import { Sequelize } from 'sequelize';
-
 const params = {
     user: MYSQL.user,
     password: MYSQL.password,
     db: MYSQL.db,
-    host: MYSQL.host
+    host: MYSQL.host,
+    port: 3306
 }
 
 //@ts-ignore
 export const db = new Sequelize(params.db, params.user, params.password, {
     host:params.host,
     dialect: 'mysql',
-    dialectOptions: {
-        encrypt: true
-      }
-} )
+   
+})
 export const createDatabase = async (): Promise<void> => {
   try {
     await db.query(`CREATE DATABASE IF NOT EXISTS ${params.db};`);
@@ -40,3 +38,7 @@ export const syncDatabase = async (): Promise<void> => {
     console.error('Error syncing database:', error);
   }
 };
+//database connection
+connection();
+syncDatabase();
+createDatabase();
