@@ -2,10 +2,11 @@ import dotenv from "dotenv"
 
 dotenv.config();
 
-const MYSQL_HOST = process.env.MYSQL_HOST;
-const MYSQL_DATABASE = process.env.MYSQL_DATABASE;
-const MYSQL_USER = process.env.MYSQL_USER;
-const MYSQL_PASSWORD = process.env.MYSQL_PASSWORD;
+const MYSQL_HOST = process.env.Server;
+const MYSQL_DATABASE = process.env.Database;
+const MYSQL_USER = process.env.User_Id;
+const MYSQL_PASSWORD = process.env.Password;
+export const CONNECTION_STRING = process.env.AZURE_MYSQL_CONNECTIONSTRING
 export const JWT_SECRET = process.env.JWT_SECRET;
 
 export const MYSQL = {

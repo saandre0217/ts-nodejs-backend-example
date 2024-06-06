@@ -15,7 +15,7 @@ export const db = new Sequelize(params.db, params.user, params.password, {
 })
 export const createDatabase = async (): Promise<void> => {
   try {
-    await db.query('CREATE DATABASE "testdb";');
+    await db.query(`CREATE DATABASE [IF NOT EXISTS] ${params.db};`);
     console.info('Database created');
   } catch (error) {
     console.error('Error creating the database:', error);
