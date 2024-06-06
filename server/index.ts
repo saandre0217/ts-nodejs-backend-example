@@ -1,6 +1,5 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import {connection, syncDatabase, createDatabase} from './src/db/config/connection';
 import routes from './src/routes/index'
 const app = express();
 
@@ -8,11 +7,6 @@ dotenv.config();
 app.use(express.json())
 const port = process.env.PORT;
 
-
-//database connection
-connection();
-syncDatabase();
-createDatabase();
 
 //route definition
 app.use(routes)
