@@ -12,8 +12,7 @@ const params = {
 //@ts-ignore
 export const db = new Sequelize(params.db, params.user, params.password, {
     host:params.host,
-    dialect: 'mysql',
-    require_secure_transport: false
+    dialect: 'mysql'
 })
 export const createDatabase = async (): Promise<void> => {
   try {
