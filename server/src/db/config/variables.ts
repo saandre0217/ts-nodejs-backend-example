@@ -15,4 +15,3 @@ export const MYSQL = {
     user: MYSQL_USER,
     password: MYSQL_PASSWORD
 }
-console.log('mysql', MYSQL)
