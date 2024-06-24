@@ -37,9 +37,9 @@ export const createCustomer = async(req: Request, res: Response) => {
 export const getCustomers = async (req: Request, res: Response) => {
     try{
 
-        //const customers = ['sydney', 'beau', 'sausage']
-        const customers = await Customer.findAll({})
-        //console.log(customers)
+        const customers = ['sydney', 'beau', 'sausage']
+        // const customers = await Customer.findAll({})
+        // //console.log(customers)
         res.status(200).send(customers)
 
     }catch(error){
