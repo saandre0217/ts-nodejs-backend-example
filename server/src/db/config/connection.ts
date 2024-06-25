@@ -13,12 +13,12 @@ export const db = new Sequelize(params.db, params.user, params.password, {
     host:params.host,
     dialect: 'mysql',
     port: 3306,
-    // ssl: false,
-    // dialectOptions: {
-    //     ssl: {
-    //         require: false
-    //     }
-    // }
+    ssl: false,
+    dialectOptions: {
+        ssl: {
+            require: false
+        }
+    }
 })
 export const createDatabase = async (): Promise<void> => {
   try {
